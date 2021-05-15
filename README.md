@@ -62,4 +62,4 @@ For brainf*ck;
 ```
 
 # What Can I Do With This?
-In theory, you can do everything. If you are masochist, try write a floppa programming language interpreted that created with floppa programming language!
+In theory, you can do everything. If you are masochist, try write a floppa programming language interpreter that created with floppa programming language!
