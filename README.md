@@ -1,13 +1,13 @@
 # Floppa Programming Language
 Created just for fun. But if you want to contribute, why not?
 
-Floppa p.l. inspired by the brainf\*ck programming language. So you can convert your brainf\*ck code to floppa code.
+Floppa programming language inspired by the brainf\*ck programming language. So you can convert your brainf\*ck code to floppa code.
 
 # Compiling
 You must have installed go before using compiler. If you have, run the `./compiler/main.go` program. Compiler takes two argument, first argument is input file (.flop file), second argument is output file (.go file). The compiler is written in golang, so you actually can compile your .flop code to machine language with using `go build <file.go>`
 
 # Converting Brainf*ck Code to Floppa Code
-You can use simple python code for that. You must have python3.6>= for use this code. Converter: `./tools/bf2floppa.py`. Same with compiler, takes two argument. First one is input file (.bf), Second one is output file (.flop).
+You can use simple python code for that. You must have python3.6>= (python3.6 or upper) for use this code. Converter: `./tools/bf2floppa.py`. Same with compiler, takes two argument. First one is input file (.bf), Second one is output file (.flop).
 
 # Hello World
 Here an example hello world program written in floppa programming language (`./example/helloworld.flop`);
@@ -61,5 +61,5 @@ For brainf*ck;
 }
 ```
 
-# What Can I Do Whit This?
+# What Can I Do With This?
 In theory, you can do everything. If you are masochist, try write a floppa programming language interpreted that created with floppa programming language!
