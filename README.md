@@ -1,13 +1,13 @@
 # Floppa Programming Language
 Created just for fun. But if you want to contribute, why not?
 
-Floppa programming language inspired by the brainf\*ck programming language. So you can convert your brainf\*ck code to floppa code.
+Floppa p.l. inspired by the brainf\*ck programming language. So you can convert your brainf\*ck code to floppa code.
 
 # Compiling
 You must have installed go before using compiler. If you have, run the `./compiler/main.go` program. Compiler takes two argument, first argument is input file (.flop file), second argument is output file (.go file). The compiler is written in golang, so you actually can compile your .flop code to machine language with using `go build <file.go>`
 
 # Converting Brainf*ck Code to Floppa Code
-You can use simple python code for that. You must have python3.6>= (python3.6 or upper) for use this code. Converter: `./tools/bf2floppa.py`. Same with compiler, takes two argument. First one is input file (.bf), Second one is output file (.flop).
+You can use simple python code for that. You must have python3.6>= for use this code. Converter: `./tools/bf2floppa.py`. Same with compiler, takes two argument. First one is input file (.bf), Second one is output file (.flop).
 
 # Hello World
 Here an example hello world program written in floppa programming language (`./example/helloworld.flop`);
@@ -29,9 +29,10 @@ fo => Remove one byte from current cell.
 go => Goto next cell.
 no => Goto last cell.
 flop => Start loop. (will continue until no byte left.)
-hoe => Loop finish.
+hoe => Finish loop or flop(0-255)
 caracal => Get one byte input.
-floppa => Print current line as ascii.
+floppa => Print current cell as ascii.
+flop(0-255) => Checks if current cell byte size same with the number. if so, runs the commands after this statement.
 
 These commands added for help while adding / removing byte:
 keer => Add two byte to current cell.
@@ -60,6 +61,9 @@ For brainf*ck;
     "----": "foooo"
 }
 ```
+
+# Comments
+Compiler ignores anything except keywords, so you can type whatever you want. Check `./example/mandelbrot.flop` for example.
 
 # What Can I Do With This?
 In theory, you can do everything. If you are masochist, try write a floppa programming language interpreter that created with floppa programming language!

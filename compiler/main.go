@@ -23,8 +23,8 @@ func main() {
 
 	inputReaded := string(input)
 
-	flopRegex := regexp.MustCompile(`floppa|caracal|keerr|keeerr|kee?r|foo?o?o?|go|no|flop|hoe`)
-	flopKeywords := flopRegex.FindAllString(inputReaded, len(inputReaded))
+	flopRegex := regexp.MustCompile(`flop\(([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\)|floppa|caracal|keerr|keeerr|kee?r|foo?o?o?|go|no|flop|hoe`)
+	flopKeywords := flopRegex.FindAllString(inputReaded, -1)
 
 	compiledProgram := `package main
 
@@ -89,6 +89,11 @@ func main() {
 			compiledProgram += fmt.Sprintf("%sfmt.Scanf(\"%%s\", &handler)\n%smemory[current] = handler[0]\n", strings.Repeat(" ", programIndentation), strings.Repeat(" ", programIndentation))
 		case "floppa":
 			compiledProgram += fmt.Sprintf("%sfmt.Print(string(memory[current]))\n", strings.Repeat(" ", programIndentation))
+		default:
+			if strings.HasPrefix(keyword, "flop(") && strings.HasSuffix(keyword, ")") {
+				compiledProgram += fmt.Sprintf("%sif memory[current] == byte(%s) {\n", strings.Repeat(" ", programIndentation), strings.TrimSuffix(string(keyword[5:]), ")"))
+				programIndentation += 4
+			}
 		}
 	}
 	compiledProgram += "}"
