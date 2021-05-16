@@ -26,6 +26,8 @@ func main() {
 	flopRegex := regexp.MustCompile(`flop\(([0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5])\)|floppa|caracal|keerr|keeerr|kee?r|foo?o?o?|go|no|flop|hoe`)
 	flopKeywords := flopRegex.FindAllString(inputReaded, -1)
 
+	inputReferenceCount := 0
+
 	compiledProgram := `package main
 
 import "fmt"
@@ -49,8 +51,6 @@ func changeByte(mem *[30000]byte, c int, a int, t string) {
 func main() {
     memory := [30000]byte{}
     current := 0
-    handler := ""
-	fmt.Print(handler)
 
 
 `
@@ -86,7 +86,14 @@ func main() {
 			programIndentation -= 4
 			compiledProgram += fmt.Sprintf("%s}\n", strings.Repeat(" ", programIndentation))
 		case "caracal":
-			compiledProgram += fmt.Sprintf("%sfmt.Scanf(\"%%s\", &handler)\n%smemory[current] = handler[0]\n", strings.Repeat(" ", programIndentation), strings.Repeat(" ", programIndentation))
+			if inputReferenceCount == 0 {
+				compiledProgram = strings.ReplaceAll(compiledProgram, "import \"fmt\"", "import \"fmt\"\nimport \"os\"\nimport \"bufio\"")
+				compiledProgram += fmt.Sprintf("%sreader := bufio.NewReader(os.Stdin)\n", strings.Repeat(" ", programIndentation))
+				compiledProgram += fmt.Sprintf("%sstr, _ := reader.ReadString('\\n')\n%smemory[current] = str[0]\n", strings.Repeat(" ", programIndentation), strings.Repeat(" ", programIndentation))
+			} else {
+				compiledProgram += fmt.Sprintf("%sstr, _ = reader.ReadString('\\n')\n%smemory[current] = str[0]\n", strings.Repeat(" ", programIndentation), strings.Repeat(" ", programIndentation))
+			}
+			inputReferenceCount++
 		case "floppa":
 			compiledProgram += fmt.Sprintf("%sfmt.Print(string(memory[current]))\n", strings.Repeat(" ", programIndentation))
 		default:

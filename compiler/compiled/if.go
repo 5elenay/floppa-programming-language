@@ -21,8 +21,6 @@ func changeByte(mem *[30000]byte, c int, a int, t string) {
 func main() {
     memory := [30000]byte{}
     current := 0
-    handler := ""
-	fmt.Print(handler)
 
 
     changeByte(&memory, current, 4, "+")
