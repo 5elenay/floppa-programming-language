@@ -36,8 +36,8 @@ func main() {
     }
     current ++
     fmt.Print(string(memory[current]))
-    if memory[current] == byte(65) {
-        changeByte(&memory, current, 1, "+")
+    if memory[current] <= byte(67) {
+        panic("Program Finished.")
     }
     fmt.Print(string(memory[current]))
 }

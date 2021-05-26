@@ -29,10 +29,13 @@ fo => Remove one byte from current cell.
 go => Goto next cell.
 no => Goto last cell.
 flop => Start loop. (will continue until no byte left.)
-hoe => Finish loop or flop(0-255)
+hoe => Finish current statement.
 caracal => Get one byte input.
 floppa => Print current cell as ascii.
+brb => Finish the program. (panic.)
 flop(0-255) => Checks if current cell byte size same with the number. if so, runs the commands after this statement.
+fofo(0-255) => Checks if current cell byte size same or smaller than the number. if so, runs the commands after this statement.
+fohoe(0-255) => Checks if current cell byte size same or bigger than the number. if so, runs the commands after this statement.
 
 These commands added for help while adding / removing byte:
 keer => Add two byte to current cell.

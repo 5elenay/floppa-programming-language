@@ -1,4 +1,4 @@
-import re, sys, textwrap
+import re, sys
 
 if len(sys.argv) < 3:
     print("ERROR: Can't find input or output argument.")
